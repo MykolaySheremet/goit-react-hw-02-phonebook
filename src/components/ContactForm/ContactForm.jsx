@@ -1,10 +1,9 @@
 import React from "react";
 
 
-export class Form extends React.Component{
+export class ContactForm extends React.Component{
 
      state = {
-            
          name: '',
          number: ''
     }
