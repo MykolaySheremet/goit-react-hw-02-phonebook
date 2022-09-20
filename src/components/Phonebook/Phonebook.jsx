@@ -4,6 +4,8 @@ import { ContactList } from '../ContactList/ContactList';
 import { Filter } from '../Filter/Filter';
 import { nanoid } from 'nanoid'
 
+import { Container, Title, ContactsTitle } from "./Phonebook.styled";
+
 export class Phonebook extends React.Component { 
 
     state = {
@@ -50,16 +52,16 @@ export class Phonebook extends React.Component {
         const contactsFilter = this.state.contacts.filter(item => item.name.toLowerCase().includes(normalizeFilter))
         
         return (
-            <div>
-                <h1>Phonebook</h1>
+            <Container>
+                <Title>Phonebook</Title>
                 <ContactForm dataSubmit={this.dataHandleSubmit}></ContactForm>
-                <h2>Contacts</h2>
+                <ContactsTitle>Contacts</ContactsTitle>
                 <Filter value={this.state.filter} onChange={this.changeFilter}></Filter>
                 <ContactList
                     datacontacts={contactsFilter}
                     deleteContacts={this.deleteContacts}
                 ></ContactList>
-            </div>
+            </Container>
                 
 
             

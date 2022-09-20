@@ -1,17 +1,19 @@
+import { ItemContacts,ListContacts } from './ContactList.styled';
+
 export const ContactList = ({ datacontacts, deleteContacts }) => {
     return (
-        <ul>
+        <ListContacts>
             {datacontacts.map(item => (
-                <li key={item.id}>
+                <ItemContacts key={item.id}>
                     <p>{item.name} : {item.number}
                     </p>
                     <button
                         type="button"
                         onClick={()=>deleteContacts(item.id)}
                         >Delete</button>
-                </li>
+                </ItemContacts>
             ))}
-        </ul>
+        </ListContacts>
     )
     
 }
