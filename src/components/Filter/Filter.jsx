@@ -1,4 +1,5 @@
 import { NameField, InputValue } from "./Filter.styled"
+import PropTypes from 'prop-types';
 
 export const Filter = ({ value, onChange }) => {
     
@@ -13,4 +14,9 @@ export const Filter = ({ value, onChange }) => {
         </NameField>
         
     )
+}
+
+Filter.propTypes = {
+    value: PropTypes.string,
+    onChange: PropTypes.func
 }

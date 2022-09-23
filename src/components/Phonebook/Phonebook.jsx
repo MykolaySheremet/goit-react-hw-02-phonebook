@@ -3,10 +3,12 @@ import { ContactForm } from '../ContactForm/ContactForm';
 import { ContactList } from '../ContactList/ContactList';
 import { Filter } from '../Filter/Filter';
 import { nanoid } from 'nanoid'
+import Notiflix from 'notiflix';
 
 import { Container, Title, ContactsTitle } from "./Phonebook.styled";
 
 export class Phonebook extends React.Component { 
+
 
     state = {
         contacts: [
@@ -20,6 +22,9 @@ export class Phonebook extends React.Component {
 
     
     dataHandleSubmit = data => {
+        if (this.isDuplicate(data)) {
+            return Notiflix.Notify.failure(`Sorry but contact ${data.name} with number ${data.number} is added to your phonebook `);
+        }
 
         const newContact = {
             id: nanoid(),
@@ -43,7 +48,14 @@ export class Phonebook extends React.Component {
             contacts: prevState.contacts.filter(item =>item.id !== idDeleteContacts )
 
         }))
-    }    
+    }
+    
+    isDuplicate = ({ name, number }) => {
+        const {contacts} = this.state;
+        // console.log(contacts);
+        const rezult = contacts.find(item => item.name.toLowerCase() === name.toLowerCase() && item.number === number)
+        return rezult;
+    }
 
     render() {
 
