@@ -53,7 +53,7 @@ export class Phonebook extends React.Component {
     isDuplicate = ({ name, number }) => {
         const {contacts} = this.state;
         // console.log(contacts);
-        const rezult = contacts.find(item => item.name.toLowerCase() === name.toLowerCase() && item.number === number)
+        const rezult = contacts.find(item => item.name.toLowerCase() === name.toLowerCase() && item.number.replace(/[^0-9]+/g, '') === number.replace(/[^0-9]+/g, ''))
         return rezult;
     }
 
